@@ -1,11 +1,11 @@
 import os
-import DAO.arma
-import DAO.CRUD.jugador
-import DAO.CRUDUsuario
-from DAO.Conexion import Conexion
-from DTO.arma import Arma
-from DTO.jugador import Jugador
-from DTO.usuario import Usuario
+
+from business.DAO.CRUDArma import CRUDArma
+from business.DAO.CRUDJugador import CRUDJugador
+from business.DAO.CRUDUsuario import CRUDUsuario
+from business.DTO.arma import Arma
+from business.DTO.jugador import Jugador
+from business.DTO.usuario import Usuario
 
 
 #Cramos la función para Menu Principal
@@ -45,7 +45,7 @@ def ingresarDatos():
 id_usuario=(input("Ingrese ID Usuario: "))
 password=input("Ingrese Passwrod: ")
 c=Usuario(id_usuario, password)
-DAO.CRUDUsuario.agregar(c) 
+CRUDUsuario.agregar(c) 
 
 #Creamos la Función para mostrar datos
 
@@ -54,11 +54,11 @@ def mostrar():
     try:
         op2=int(input("Ingrese Opción: "))
         if op2==1:
-            mostrarTodos()
+            CRUDUsuario.mostrarTodos()
         elif op2==2:
-            mostrarUno()
+            CRUDUsuario.mostrarUno()
         elif op2==3:
-            mostrarParcial()
+            CRUDUsuario.mostrarParcial()
         if op2==4:
             return
         else:
@@ -74,10 +74,10 @@ def modificar():
     print("***********************")
     print("Modificar Datos Usuario")
     print("***********************")
-    mostrarTodos()
+    CRUDUsuario.mostrarTodos()
     id_usuarioMOD=int(input("ngrese Id de Usuario a Modificar: "))
     #Debo solicitar los datos del usuario elegido
-    dato=DAO.CRUDUsuario.mostrarUno(id_usuarioMOD)
+    dato=CRUDUsuario.mostrarUno(id_usuarioMOD)
     print("ID Usario      :{}".format(dato[0]))
     listaNuevosdatos.append(dato[0])
     print ("Contraseña Usuario    :{}".format(dato[1]))
@@ -87,5 +87,4 @@ def modificar():
         nuevoID = input("Ingrese el nuevo ID de Usuario: ")
         listaNuevosdatos[0]= nuevoID
     opm = input("Ingrese la nueva contraseña:{} -[SI/NO]".format(dato[0]))
-    if opm.lower 
 

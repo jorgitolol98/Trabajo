@@ -1,3 +1,4 @@
+
 import pymysql
 
 class Conexion:
@@ -23,4 +24,11 @@ class Conexion:
     
     def rollback(self):
         self.db.rollback()
-    
+
+
+if __name__ == '__main__':
+    host = 'localhost'
+    user = 'benjaconnector'
+    password = '123456789'
+    db = 'poos_juego'
+    Conexion(host,user, password, db )

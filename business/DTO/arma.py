@@ -1,5 +1,5 @@
 
-from utils.validacion_entradas import validar_entrada
+from business.DTO.utils.validacion_entradas import validar_entrada
 
 class Arma:
 
